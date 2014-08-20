@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>佣金宝</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no,target-densitydpi = medium-dpi">
+<meta name="format-detection" content="telephone=no">
+<meta name="apple-touch-fullscreen" content="YES">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+<link rel="stylesheet" type="text/css" href="css/base.css" media="all" />
+<link rel="stylesheet" type="text/css" href="css/jy_index.css" media="all"/>
+<link rel="stylesheet" type="text/css" href="skin/skin.css">
+</head>
+
+<body>
+	<section class="wrap">
+		<!--<h1 class="yjb_h1">佣金宝·万二交易</h1>-->
+		<div class="yjb_menu clear">
+			<div class="tagItem buy" data-acid="12310"><p class="ico"><em></em></p><p class="text">买入</p></div>
+			<div class="tagItem sale" data-acid="12311"><p class="ico"><em></em></p><p class="text">卖出</p></div>
+			<div class="tagItem retreat" data-acid="12340"><p class="ico"><em></em></p><p class="text">撤单</p></div>
+		</div>
+		<article class="yjb_list">
+			<ul>
+				<li class="items wdcc" data-acid="12342"><i></i>我的持仓</li>
+				<li class="items wdzj" data-acid="12360"><i></i>我的资金</li>
+				<li class="items jjjy" data-acid="12701"><i></i>基金交易</li>
+				<!--<li class="items rzrq" data-acid="12310"><i></i>融资融券</li>-->
+				<li class="items yzzz" data-acid="12302"><i></i>银证转账</li>
+				<li class="items more" data-acid="12301"><i></i><em>...</em>更多</li>
+			</ul>
+		</article>
+        <article class="yjb_list operea">
+			<ul>
+				<li class="items" data-acid="10402">退出交易</li>
+			</ul>
+		</article>
+	</section>
+	<script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
+	<script type="text/javascript" src="js/com.js"></script>
+	<script type="text/javascript">
+	$(function(){
+		var s_type=getUrlParameter("skinType");
+		if(s_type==1){
+			$('body').addClass('skin_b');
+		}
+
+		going();	
+		function going(){
+			//判断是否登录
+			var sUrl = '/reqlocal?jyloginflag=&account=';
+		    getData(sUrl, '', function (oData) {
+		        if(oData.JYLOGINFLAG <=1){      // 用户登录，1代表弱权限登录，2代表强权限登录
+					$(".loginOut").hide();
+		        } 
+		    });
+			
+			var jItems = $(".tagItem , .items "),
+					sDataAcid = "data-acID",
+					sDataURL = "data-url",
+					sBasURL = "http:\/\/action:";
+			$.each(jItems,function(index,obj){
+				$(obj).on("click",function(){
+					var sThisURL = "";
+					if($(obj).attr(sDataAcid) != null && $(obj).attr(sDataAcid)!=""){
+						sThisURL =  sBasURL + $(obj).attr(sDataAcid);
+					}else{
+						sThisURL = "http://action:10090?url=" + encodeURIComponent("http://action:10061/?type=0&&fullscreen=1&&url=" + $(obj).attr(sDataURL))
+					}
+					onJsOverrideUrlLoading(sThisURL);
+				})	
+			})  		
+		}
+	})
+	</script>
+</body>
+</html>

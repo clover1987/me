@@ -1,0 +1,49 @@
+css  层叠样式表
+
+js   js文件
+
+img  图片
+
+
+html：
+	sjhmyz.html          01_激活
+
+	uploadid.htm	     02_选择开户或转户
+
+	newuploadpic.html    03_拍照 新账户
+
+	uploadpic.htm	     03_拍照.png
+
+	uploadid.html        上传身份证页面
+
+        wszl.htm             05_完善资料
+
+	digital.html	     06_数字证书下载
+	
+	hand.htm	     07_手势解锁页面
+
+	setpwd.html	     08_设置常用密码
+
+	ktzh.html  	     09_开通账号&签协议
+
+	setallpwd.html	     10_设置密码
+
+	depository.html      11_三方存管
+
+	success.html	     12_开户成功-非交易时
+
+	transuccess.htm      12_开户成功-交易时.png
+
+	risk.html  	     风险测评
+
+	visit.html	     问卷回访
+
+	pcresult.htm	     风险评测结束
+
+	reservation.htm	     视频预约页面
+
+	successvedio.htm     视频预约成功页面
+
+
+	jy_index.htm 	交易首页
+

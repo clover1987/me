@@ -1,0 +1,106 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no,target-densitydpi = medium-dpi">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-touch-fullscreen" content="YES">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title>身份验证</title>
+    <link rel="stylesheet" type="text/css" href="css/base.css">
+    <link rel="stylesheet" type="text/css" href="css/sjkh.css">
+<link rel="stylesheet" type="text/css" href="skin/skin.css">
+</head>
+<body>
+<div id="modiHead">
+    <h6 class="textTitle">开户只需三步:</h6>
+    <span class="textId textFocus"><em class="icoTopNav">1</em>身份验证</span><span class="textData"><em class="icoTopNav">2</em>签署协议</span><span class="textKeep"><em class="icoTopNav">3</em>三方存管</span>
+</div>
+<div id="personWraper">
+    <div class="item">
+        <span class="textName">姓 名</span>
+        <input class="textContent" type="text" value="">
+    </div>
+    <div class="item">
+        <span class="textName">身份证</span>
+        <input class="textContent" type="text" value="">
+    </div>
+    <div class="item" style="display:none">
+        <span class="textName">签发机关</span>
+        <input class="textContent" type="text" value="">
+    </div>
+    <div class="item">
+        <span class="textName">证件住址</span>
+        <input class="textContent" type="text" value="">
+    </div>
+    <div class="item">
+        <span class="textName">联系地址</span>
+        <input class="textContent" type="text" value="">
+    </div>
+	<div class="item">
+        <span class="textName">营业部</span>
+        <div class="selectPro">
+            <select id="branch">
+				<option value="none">请选择营业部</option>
+            </select>
+        </div>
+    </div>
+    <div class="itemLast">
+        <span class="textName">邮 编</span>
+        <input class="textContent" type="tel" value="" pattern="[0-9]">
+    </div>
+</div>
+<div id="choiceWraper">
+    <div class="item">
+        <span class="textName">职 业</span>
+        <div class="selectPro">
+            <select id="profession">
+				<option value="none">请选择职业</option>
+				<option value="01">文教科卫专业人员</option>
+				<option value="02">党政 ( 在职，离退休 ) 机关干部</option>
+				<option value="03">企事业单位干部</option>
+				<option value="04">行政企事业单位工人</option>
+				<option value="05">农民</option>
+				<option value="06">个体</option>
+				<option value="07">无业</option>
+				<option value="08">军人</option>
+				<option value="09">学生</option>
+				<option value="10">证券从业人员</option>
+				<option value="99">其他</option>
+            </select>
+        </div>
+    </div>
+    <div class="itemLast">
+        <span class="textName">学 历</span>
+        <div class="selectPro">
+            <select id="degree">
+                <option value="none">请选择学历</option>
+				<option value="1">博士</option>
+				<option value="2">硕士</option>
+				<option value="3">学士</option>
+				<option value="4">大专</option>
+				<option value="5">中专</option>
+				<option value="6">高中</option>
+				<option value="7">初中及其以下</option>
+				<option value="8">其他</option>
+            </select>
+        </div>
+    </div>
+</div>
+<div id="personFoot">
+    <a class="btnContinue btnWidth" href="javascript:;" data-click="Y">继续开户</a>
+</div>
+<div id="reCardPic" style="display:none;">
+    <a class="btnContinue btnWidth" href="javascript:;">重新上传身份证</a>
+</div>
+<div id="reWszl" style="display:none;">
+    <a class="btnContinue btnWidth" href="javascript:;">重新确认身份证</a>
+</div>
+<script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="js/alert.js"></script>
+<script type="text/javascript" src="js/com.js"></script>
+<script type="text/javascript" src="js/prove.js"></script>
+<script type="text/javascript" src="js/wszl.js"></script>
+</body>
+</html>

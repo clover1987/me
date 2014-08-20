@@ -1,0 +1,39 @@
+<div class="page" id="cash_autorecharge" data-pageTitle="设置金额" style="height: 100%;">
+	<div class="mod-scale h110 mb15">
+		<p class="scale-p1">当前保留金额（元）</p>
+		<p class="scale-p2 mt30" id="auto_apply_threshold"></p>
+	</div>
+		<div class="from-box p20">
+			<div class="form-item02">
+				<span class="item-h2">保留金额</span>
+				<input type="number" class="item-input-add" placeholder="" id="autorecharge_input" />
+			</div>
+		</div>
+		<p class="next-p1 p0-20 mb15">
+			保证金中超出<strong class="red" id="autorecharge_string_tip"></strong>元的闲散资金每日16:00会自动买入金腾通货币基金
+		</p>
+		  <a href="javascript:void(0);" class="gray-next-btn m0-20" id="autorechargeBtn">确&nbsp;定</a>
+		<!--<a href="javascript:void(0);" class="blue-next-btn m0-20" id="autorechargeBtn">确&nbsp;定</a>-->
+	<input type="hidden" name="hiddenflag" id="hiddenflag" value="-1" />
+	<div class="window" style="display: none;" id="expiredWindow">
+		<div class="window-in" id="expiredPwdWindow-in-a">
+			<div class="win_title">
+				<div class="pic">
+					<img src="/me/project/images/icon12.png" width="32" height="32">
+				</div>
+				<div class="text">亲，请输入交易密码保存设置</div>
+			</div>
+			<div id="textbtn">
+				<input type="password" class="pwd_input" placeholder="请重新输入密码" id="password" maxlength="6">
+				<!-- pwd_btn -->
+			</div>
+			<div id="failtext" style="display: none;">
+				<p class="open-account-p" style="color: black;">亲，为确保您的账户安全，请休息10分钟后重试
+				</p>
+			</div>
+			<p class="pwd_p" id="errorTips" style="margin:0 10%;"></p>
+            <a href="javascript:void(0);" class="pwd_btn_l mt10" id="nextBtn" data="0">确定</a>
+            <a href="javascript:void(0);" class="pwd_btn_r mt10" id="nextBtn_r" data="0">取消</a>
+		</div>
+	</div>
+</div>

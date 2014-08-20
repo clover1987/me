@@ -1,0 +1,103 @@
+﻿<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<script type="text/javascript">
+var cRequestSign = "/reqxml";
+var xmlhttp;
+if(window.XMLHttpRequest){
+    // code for IE7+, Firefox, Chrome, Opera, Safari
+    xmlhttp=new XMLHttpRequest();
+  }
+else{
+    // code for IE6, IE5
+    xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+
+xmlhttp.onreadystatechange=function(){   
+  if(xmlhttp.readyState==4 && xmlhttp.status==200){
+      document.getElementById("myDiv").innerHTML = xmlhttp.responseText;
+      exit;
+      
+	    //使用JSON的方式来解析XML数据对象的数据
+	    //alert(xmlhttp.responseText);
+	    var JSONObject = eval("(" + xmlhttp.responseText + ")"); 	    
+			var messageNodes = JSONObject.GRID0;
+      //alert(JSONObject.GRID0);
+			if(messageNodes != null){	
+				  var count = messageNodes[0].split('|').length; 	
+				  var txt="<table border='1'><tr>";
+				  for(i=0;i<count-1;i++){
+				      txt=txt + '<th>第' + (i + 1) +'列</th>';
+				    } 
+					txt=txt + "</tr>";
+
+			    for(i=0;i<messageNodes.length;i++){
+			      txt=txt + "<tr>";
+			      items = messageNodes[i].split('|');
+			      for(j=0;j<items.length - 1;j++){
+			      	 temp = items[j];
+			      	 if(temp.length > 0)
+			            txt=txt + "<td>"  + temp + "&nbsp;</td>";
+				       else
+				         	txt=txt + "<td>&nbsp;</td>";
+			       }
+			      txt=txt + "</tr>";
+					 }
+					txt=txt + "</table>";			
+					//把值txt显示在div上
+					document.getElementById("myDiv").innerHTML=txt;
+				}
+   			else{
+				   	if(JSONObject.ERRORMESSAGE != null)
+								document.getElementById("myDiv").innerHTML ='ERRORMESSAGE=' + JSONObject.ERRORMESSAGE;
+						else
+							 document.getElementById("myDiv").innerHTML = xmlhttp.responseText;
+						 		//alert("应答数据格式错误，原始文本内容为：" + xmlhttp.responseText);
+						}
+			}
+}
+
+
+//当url含中文(utf8编码)字时,需做网页编码encodeURI()处理
+function loadXMLDocGet(){
+	xmlhttp.open("GET", encodeURI("/reqxml?action=44060&UniqueKey=ACT_0005&funcNo=1000312&fund_account=($fund_account)&password=($password)&money_type=0"), true);		
+	xmlhttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded")
+	xmlhttp.send();
+}
+
+//post的内容(默认utf8编码)一般不需要做网页编码处理
+function loadXMLDocPost(){
+	xmlhttp.open("POST", "/reqxml", true);
+	//xmlhttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded")
+	var a = "action=44060&UniqueKey=ACT_0009&funcNo=1000316&fund_account=($fund_account)";
+  xmlhttp.send(a);
+}
+
+function param2Data(param) {
+    var url = "";
+    for (var i in param) {
+        url += (i + "=" + param[i] + "&");
+    }
+    return url.substring(0, (url.length)-1);
+}
+
+var param = {
+    name:"dahuang",
+    age :12,
+    fund_account: "($fund_account)",
+    "hobby": "gun"
+}
+
+alert(param2Data(param));
+
+
+</script>
+</head>
+
+<body>
+<button type="button" onclick="loadXMLDocPost()">业务请求(异步Post)</button><br/>
+<button type="button" onclick="loadXMLDocGet()">业务请求(异步Get)</button><br/>
+<br>
+<div id="myDiv"><h3>测试结果显示在这里!</h3></div>
+</body>
+</html>

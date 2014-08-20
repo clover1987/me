@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no,target-densitydpi = medium-dpi">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-touch-fullscreen" content="YES">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title>身份验证</title>
+    <link rel="stylesheet" type="text/css" href="css/base.css">
+    <link rel="stylesheet" type="text/css" href="css/sjkh.css">
+<link rel="stylesheet" type="text/css" href="skin/skin.css">
+</head>
+<body>
+<div id="sjyzHead">
+    <h6 class="textTitle">开户只需三步:</h6>
+    <span class="textId textFocus"><em class="icoTopNav">1</em>身份验证</span><span class="textData"><em class="icoTopNav">2</em>签署协议</span><span class="textKeep"><em class="icoTopNav">3</em>三方存管</span>
+</div>
+<div id="sjyzWraper">
+    <div class="textMobi">
+        <img class="icoMobi" src="img/mobi.png">
+        <input class="inputNum" type="tel" value="" placeholder="请输入手机号码" pattern="[0-9]" maxlength="11">
+        <a href="javascript:;" id="capBtn" class="clickCap">获取验证码</a>
+    </div>
+    <div class="textCap">
+        <img class="icoCap" src="img/cap.png">
+        <input class="inputNum" type="tel" placeholder="请输入验证码" pattern="[0-9]" maxlength="6">
+    </div>
+</div>
+<div id="sjyzFoot">
+    <a class="btnNextGray btnNext" href="javascript:;">继续开户</a>
+</div>
+<script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="js/alert.js"></script>
+<script type="text/javascript" src="js/com.js"></script>
+<script type="text/javascript" src="js/phone.js"></script>
+<script type="text/javascript" src="js/checkCode.js"></script>
+</body>
+</html>

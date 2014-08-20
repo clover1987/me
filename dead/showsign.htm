@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no,target-densitydpi = medium-dpi">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-touch-fullscreen" content="YES">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title>查看协议</title>
+    <link rel="stylesheet" type="text/css" href="css/base.css">
+    <link rel="stylesheet" type="text/css" href="css/sjkh.css">
+    <style type="text/css">
+    	.pactText .pactUrl{font-size:12px;}
+    </style>
+<link rel="stylesheet" type="text/css" href="skin/skin.css">
+</head>
+<body>
+<!--div id="openHead">
+    <h6 class="textTitle">开户只需三步:</h6>
+    <span class="textId"><em class="icoTopNav">1</em>身份验证</span><span class="textData textFocus"><em class="icoTopNav">2</em>签署协议</span><span class="textKeep"><em class="icoTopNav">3</em>三方存管</span>
+</div>
+<div id="openTitle">
+    <h1 class="titleAcc">请您选择开通以下账户</h1>
+</div>
+<div id="openAcc">
+    <div class="listAcc">
+        <b class="choIco"></b>
+        <a class="clickCom">上海A股</a>
+    </div><div class="listAcc">
+        <b class="choIco"></b>
+        <a class="clickCom">深圳A股</a>
+    </div><!--div class="listAcc">
+        <b class="choIco"></b>
+        <a class="clickCom">沪开放式基金</a>
+    </div><div class="listAcc">
+        <b class="choIco"></b>
+        <a class="clickCom">深开放式基金</a>
+    </div>
+    <div class="listAcc">
+        <b class="choIcoN"></b>
+        <a class="clickCom">国金通用基金</a>
+    </div>
+</div>
+<div id="openFoot">
+    <b class="openIco openIcoNone"></b>
+    <h1 class="titleAcc">我已仔细阅读并同意签署</h1>
+</div>
+<div id="signTitle">
+    <h1 class="titleAcc">签署下列与开通证券账户对应协议</h1>
+</div-->
+<div id="pactContent" style="margin-top: 20px;">
+    <!--p class="pactText">
+        <a class="pactUrl" href="data/fxjss.htm">《用户协议与风险揭示书》</a>
+        <img class="pactIco" src="img/arr.png">
+    </p>
+    <p class="pactText">
+        <a class="pactUrl" href="data/xz.htm">《开放式基金协议和须知》</a>
+        <img class="pactIco" src="img/arr.png">
+    </p>
+    <p class="pactText">
+        <a class="pactUrl" href="data/gjty.htm">《国金太阳服务协议》</a>
+        <img class="pactIco" src="img/arr.png">
+    </p>
+    <p class="pactText">
+        <a class="pactUrl" href="data/yds.htm">《电子签名约定书》</a>
+        <img class="pactIco" src="img/arr.png">
+    </p-->
+</div>
+<div id="openBottom">
+    <a class="btnContinue btnWidth" href="javascript:;">返回</a>
+</div>
+<div class="show_warp">
+	<div class="box">
+	</div>
+    <div class="bmtn">
+        <span id="closed"></span>
+    </div>
+</div>
+<script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="js/com.js"></script>
+<script type="text/javascript">
+var oData = {};
+initialize();
+// 初始化
+function initialize() {
+	var reLine = /^\||\|$/g,
+		str = '1|1|6010|123987|0|0|',
+		aGrid = str.replace(reLine, '').split('|');
+	getEcontractConfig(function(resultList) {
+		fillEcontract(document.getElementById('pactContent'), resultList);
+		var oShow = $('.show_warp'),
+			aHeight = $(document).height(),
+			iWidth = document.documentElement.clientWidth;
+		$('.bmtn').css({'width': iWidth});
+		$("#pactContent .pactText").each(function(index,obj){
+			var oThis = $(obj),
+				jDomA = oThis.find("a");
+			oThis.on("click",function(){
+				oShow.css({width: '100%', height: aHeight}).show();
+				document.body.scrollTop = 0;
+				getEcontractTextConfig($(this).attr('ecId'), function(binData) {
+					$('.box').css({width: '100%'}).html('<h2>'+binData.econtract_name+'</h2>'+ '<p>' + binData.econtract_content + '</p>');
+				});
+			});
+		});	
+		var iHeight = $(window).height()-272;
+		if (iHeight > $("#wrapped ul").height()) {
+			iHeight = 330;
+		}
+		$("#wrapped").height(iHeight);
+		
+		$('#closed').click(function(){
+			oShow.hide();
+		});
+	});
+	
+	oTools.ReadToLocal(function (data) {
+		oData = $.extend(oData, data);
+	}, "clientId=&fundAccount=&accountState=&csdcOpenFlag=&MobileNo=");
+	
+	// 继续开户
+	$('.btnContinue').bind('click', function() {
+		onJsOverrideUrlLoading('/sjkh/success.htm');
+	});
+};
+// 协议配置文本获取
+function getEcontractTextConfig(eId, succ) {
+	var params = cRequestSign + encodeURI("?action=31001&path=/WA0009&op_station=($tztudid)&econtract_id=" + eId);
+	getData(params, '', function (data){
+		var binData = JSON.parse(data.BINDATA),
+			error_no = binData.error_no,
+			error_info = binData.error_info;
+		if (error_no == '0') {
+			succ(binData);
+		} else {
+	        alert(error_info);
+		}
+	});
+};
+// 协议配置列表获取
+function getEcontractConfig(succ) {
+	var params = cRequestSign + encodeURI("?action=31001&path=/WA0008&op_station=($tztudid)&econtract_type=1");
+	getData(params, '', function (data){
+		var binData = JSON.parse(data.BINDATA),
+			error_no = binData.error_no,
+			error_info = binData.error_info;
+		if (error_no == '0') {
+			succ(binData.resultList);
+		} else {
+			alert(error_info);
+		}
+	});
+};
+// 填充协议列表
+function fillEcontract(obj, arr) {
+	var i = 0,
+		len = arr.length,
+		str = '';
+	for (; i < len; i++) {
+		str += '<p class="pactText" ecId="' + arr[i].econtract_id + '"><a class="pactUrl" href="javascript:;">' + arr[i].econtract_name + '</a><img class="pactIco" src="img/arr.png"></p>';
+	}
+	obj.innerHTML = str;
+};
+</script>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<div class="page" id="yjb_yjb_i_menu" style="height: 100%;">
+    <div class="menu" id="menu">
+        <div class="menu-title">
+            <img src="/me/project/images/smile.png" width="45" height="45"/>
+            <div class="menu-title-name " id="username"></div>
+            <div class="menu-title-text"></div>
+            <div class="menu-input-trigger"></div>
+        </div>
+        <div class="menu-item modifyMobile">
+            <div class="menu-item-left"></div>
+            <input class="menu-item-input" id="mobile" type="tel" value="" placeholder="输入移动号码" maxlength="11" readonly>
+            <a class="menu-item-getCaptcha">获取验证码</a>
+            <div class="menu-item-edit"></div>
+            <div class="menu-item-editing"></div>
+        </div>
+        <div class="menu-item modifyTel">
+            <div class="menu-item-left"></div>
+            <input class="menu-item-input" id="tel" type="tel" value="" placeholder="输入固定电话号码"  readonly>
+            <div class="menu-item-edit"></div>
+            <div class="menu-item-editing"></div>
+        </div>
+        <div class="menu-item modifyAddress">
+            <div class="menu-item-left"></div>
+            <input class="menu-item-input"  id="address" type="text" value="" placeholder="输入地址"  readonly>
+            <div class="menu-item-edit"></div>
+            <div class="menu-item-editing"></div>
+        </div>
+
+        <div class="menu-item2" id="changePass_j">
+            修改交易密码
+            <div class="menu-item2-arrow"></div>
+        </div>
+        <div class="menu-item2" id="changePass_z">
+            修改资金密码
+            <div class="menu-item2-arrow"></div>
+        </div>
+        <a href="javascript:void(0);" id="remind_set">
+        <div class="menu-item2" id="remindset">
+            提醒设置
+            <div class="menu-item2-arrow"></div>
+        </div>
+        </a>
+
+        <div class="window" style="display: none;" id="expiredPwdWindow">
+            <div class="window-in" id="expiredPwdWindow-in" style="top: 10%;">
+                <div class="win_title">
+                    <div class="pic">
+                        <img src="/me/project/images/icon12.png" width="32" height="32">
+                    </div>
+                    <div class="text"></div>
+                </div>
+                <div id="textbtn_i">
+                    <input type="password" class="pwd_input" placeholder="请输入密码"
+                           id="password" maxlength="6">
+                    <input type="password" class="pwd_input" placeholder="请输入新密码"
+                           id="newPassword" maxlength="6">
+                    <input type="password" class="pwd_input" placeholder="请重新输入新密码"
+                           id="reNewPassword" maxlength="6">
+                    <!-- pwd_btn -->
+                </div>
+                <div id="failtext_i" style="display: none;">
+                    <p class="open-account-p" style="color: black;">亲，为确保您的账户安全，请休息10分钟后重试
+                    </p>
+                </div>
+                <p class="pwd_p" id="errorTips" style="margin: 0 10%;"></p>
+                <a href="javascript:void(0);" class="pwd_btn mt10" id="nextBtn" data="0">确定</a>
+            </div>
+        </div>
+
+    </div    >
+
+    <div class="menu2"></div>
+
+</div>
+
+<!--</body>-->
+<!--</html>-->

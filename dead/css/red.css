@@ -1,0 +1,16 @@
+body{ background: #f9f9f9;}
+#sjyzHead, #newPicHead, #upPicHead, #digiHead, #depHead, #modiHead, #allpwdHead, #setpwdHead, #handHead, #openHead, #upIdHead{ background: #f1f1f1;color:#666;}
+#sjyzHead .textTitle, #upPicHead .textTitle, #newPicHead .textTitle, #depHead .textTitle, #allpwdHead .textTitle, #digiHead .textTitle, #openHead .textTitle, #modiHead .textTitle, #handHead .textTitle, #setpwdHead .textTitle, #upIdHead .textTitle{color: #666;}
+#sjyzHead .textFocus, #upPicHead .textFocus, #newPicHead .textFocus, #allpwdHead .textFocus, #depHead .textFocus, #modiHead .textFocus, #digiHead .textFocus, #openHead .textFocus, #setpwdHead .textFocus, #handHead .textFocus, #upIdHead .textFocus ,.textCheckLink{border-color: #da273a;}
+#depTitle .textCheckbank,#digiWraper,#openAcc,#newPicDetail, #upPicDetail,#reserveWraper,#fundsContent, #allpwdContent,#setpwdWraper,#sjyzWraper,#wraperSIN, #tranWraper{ background-color:#f1f1f1;border: 1px solid #e1e1e1;}
+#depCheckbox .depCap, .depCheckbox .depCap{color:#656565;}
+#vediopassWraper .passVedioText, #failWraper .passVedioText, #waitWraper .passVedioText, #digitalWraper .passVedioText,#reserveHead .textContact,#riskHead .riskTitle, #visitHead .riskTitle,#vediopassWraper .passVedioText, #failWraper .passVedioText, #waitWraper .passVedioText, #digitalWraper .passVedioText{color: #666;}
+#fundsContent .textDepict, #allpwdContent .textDepict{ background: #d4d1d1;}
+
+/*--------------------------*/
+#selectBank option::selection{ background:#da273a;}
+#depFoot .btnContinue,#reCardPic .btnContinue, #reWszl .btnContinue, #personFoot .btnContinue, #setpwdFoot .btnContinue, #fundsBottom .btnContinue, #footSIN .btnContinue, #openBottom .btnContinue, #upPicFoot .btnContinue,#pcjsBottom .btnContinue,#reserveBottom .btnContinue,#visitFoot .btnContinue, #handFoot .btnContinue, #riskFoot .btnContinue,#sjyzFoot .btnNext,#tranWraper .btnContinue, #wraperSIN .btnContinue,#upIdDetail .linkTitle{background: url("../img/btnclick_red.png") no-repeat;background-size: 100% 100%;}
+.slipDigi .downDigi,.slipDigi .instalDigi{ background: #da273a;}
+#digiWraper .textWait,#digitalWraper a,#failWraper a, #waitWraper a, #digitalWraper a, #vediopassWraper a, #wraperSIN a,.textCheckLink,#help, #jy, #success, #newSuccess, #Showsign,#showSign,.textUseDown a{color: #da273a;}
+.typeContent p{background:#da273a; border: solid #cc1e30 1px}
+.textMobi .clickCapGray {background: url("../img/buttommobilost_red.png") no-repeat;	background-size: 82px 32px;}

@@ -1,0 +1,22 @@
+body{ background: #f9f9f9;}
+#sjyzHead, #newPicHead, #upPicHead, #digiHead, #depHead, #modiHead, #allpwdHead, #setpwdHead, #handHead, #openHead, #upIdHead{ background: #f1f1f1;color:#666;}
+#sjyzHead .textTitle, #upPicHead .textTitle, #newPicHead .textTitle, #depHead .textTitle, #allpwdHead .textTitle, #digiHead .textTitle, #openHead .textTitle, #modiHead .textTitle, #handHead .textTitle, #setpwdHead .textTitle, #upIdHead .textTitle{color: #666;}
+#sjyzHead .textFocus, #upPicHead .textFocus, #newPicHead .textFocus, #allpwdHead .textFocus, #depHead .textFocus, #modiHead .textFocus, #digiHead .textFocus, #openHead .textFocus, #setpwdHead .textFocus, #handHead .textFocus, #upIdHead .textFocus {border-color: #2a8ee3;}
+#depTitle .textCheckbank,#digiWraper,#openAcc,#newPicDetail, #upPicDetail,#reserveWraper,#fundsContent, #allpwdContent,#fundsContent, #allpwdContent,#setpwdWraper,#sjyzWraper，#wraperSIN, #tranWraper,#sjyzWraper{ background-color:#f1f1f1;border: 1px solid #e1e1e1;}
+#depCheckbox .depCap, .depCheckbox .depCap{color:#656565;}
+#vediopassWraper .passVedioText, #failWraper .passVedioText, #waitWraper .passVedioText, #digitalWraper .passVedioText,#reserveHead .textContact,#vediopassWraper .passVedioText, #failWraper .passVedioText, #waitWraper .passVedioText, #digitalWraper .passVedioText{color: #666;}
+#fundsContent .textDepict, #allpwdContent .textDepict{ background: #d4d1d1;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

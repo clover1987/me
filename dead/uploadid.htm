@@ -1,0 +1,95 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no,target-densitydpi = medium-dpi">
+<meta name="format-detection" content="telephone=no">
+<meta name="apple-touch-fullscreen" content="YES">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<title>身份验证</title>
+<link rel="stylesheet" type="text/css" href="css/base.css">
+<link rel="stylesheet" type="text/css" href="css/sjkh.css">
+<style type="text/css">
+.notices{ margin:10px 15px; background:#fcb117; border-radius:3px; height:35px; line-height:35px;}
+.notices  span{ display:inline-block;*display:inline;*zoom:1; line-height:35px;}
+.notices .ico{width:31px; height:17px; background:url(img/person.png) 0 0 no-repeat; background-size:31px 17px; margin:2px 0 0 10px; position:relative;top:5px;}
+.notices .text{ color:#fff; font-size:13px; margin:0 0 0 10px;}
+.alert{ padding:5px 0 0;background:#2c8fe3; color:#fff; text-align:center; font-size:16px;}
+.alert .alert_content{background:#2c8fe3; color:#fff; padding:5px;}
+.alert_content p{ text-indent:2.0em; text-align:left; font-size:12px; line-height:18px;}
+.alert_content p .alt{ background:#faa811; display:inline-block;}
+.alert .alert_ok {height: 34px;text-align: center;margin: 10px 0 0 0;}
+.alert .alert_ok .alert_okBtn{ width:100%; text-align:center; color:#2c8fe3; background:#fff;}
+.alert .alert_ok{ margin:0; position:absolute; right:2px;top:2px; background:#fff;border-radius: 2px;line-height: 24px;width: 24px;height: 24px;}
+.alert .alert_ok .alert_okBtn{text-align: center;border-radius: 2px;line-height: 24px;width: 24px;height: 24px;color:#fcb117; font-weight:bold;}
+</style>
+<link rel="stylesheet" type="text/css" href="skin/skin.css">
+</head>
+<body>
+<div id="upIdHead">
+    <h6 class="textTitle">开户只需三步:</h6>
+    <span class="textId textFocus"><em class="icoTopNav">1</em>身份验证</span><span class="textData"><em class="icoTopNav">2</em>签署协议</span><span class="textKeep"><em class="icoTopNav">3</em>三方存管</span>
+</div>
+<!--<div id="upIdTitle"><h6 class="upPicHead">请您选择</h6></div>-->
+<!--<div class="notices"><span class="ico"></span><span class="text">宝宝有话说 - - 佣金率即将调整</span></div>-->
+<div id="upIdDetail">
+    <p class="textUseTop">从未在任何一家证券公司开立账户，马上开户至国金，立享万2.5佣金。<b class="circle"></b></p>
+    <a class="linkTitle" href="javascript:;">马上开户</a>
+    <p style="background:#CECACA;height:1px; margin:0 10px 10px;"></p>
+    <p class="textUse">已在其他证券公司开立账户，马上转户至国金，立享万2.5佣金。<b class="circle"></b></p>
+    <a class="linkTitle" href="javascript:;" style="margin:12px 0 12px 0;">马上转户</a>
+    <p class="textUseDown"><a href="javascript:;" id="jy">证券课堂</a><a  href="javascript:;" id="help">转户秘籍</a></p>
+</div>
+<div id="upIdFoot">
+    <p class="textUse pullHeight">开户前请准备好：<b class="circle"></b></p>
+    <p class="textUse colorBLK">身份证、带前后摄像头手机、3G或wifi</p>
+    <p class="textUse pullHeight">开户申请办理时间：<b class="circle"></b></p>
+    <p class="textUse colorBLK downHeight">7*24小时接受开户申请，我们将在一个工作日内通知您开户结果。</p>
+</div>
+<script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="js/alert.js"></script>
+<script type="text/javascript" src="js/com.js"></script>
+<script type="text/javascript" src="js/data.js"></script>
+<script type="text/javascript">
+
+// 新入市用户
+$('.linkTitle').eq(0).click(function() {
+	//增加business_type字段（business_type-业务类型 0 新开户 1 转户）给三方存管页面获取银行列表使用
+	// update for yyy at 20140606 
+	getData('/reqsavemap?business_type=0','',function(){ 
+		onJsOverrideUrlLoading('/sjkh/sjhmyz.htm?type=1');
+	})
+	
+});
+// 已入市用户 type=2  // update for yyy at 20140422 
+$('.linkTitle').eq(1).click(function() {
+	getData('/reqsavemap?business_type=1','',function(){
+		onJsOverrideUrlLoading('/sjkh/sjhmyz.htm?type=1');
+	})
+});
+/*sucMsg.content为data.js中的成功数据*/
+$('#help').click(function() {
+	onJsOverrideUrlLoading('http://action:10061/?url=' + encodeURIComponent('http://www.yongjinbao.com.cn/mobile/zhuanhu.html'));
+});
+// 投资者教育
+$('#jy').click(function(){
+	onJsOverrideUrlLoading('http://action:10061/?url=' + encodeURIComponent('http://www.gjzq.com.cn/main/service/education/yjb/index.shtml'));
+});
+
+$('#indroduce').click(function(){
+	onJsOverrideUrlLoading('http://action:10061/?url=' + encodeURIComponent('http://www.yongjinbao.com.cn/mobile/'));
+});
+
+$('.notices').click(function(){
+	popup({
+		width:'95%',
+		title:"佣金率即将调整公告",
+		bottom:'<input type="button" class="alert_okBtn" value="X">',
+		content:'<p>各位亲们：自2月20日上线以来，宝宝一直受到各位亲们的关注和关爱，在给予亲们万二佣金率炒股的同时，宝宝努力提升账户闲置资金理财收益以回报各位亲。有亲们私信跟宝宝说："我最近一段时间炒股的佣金已经被闲置资金理财收益覆盖了，还获得了不少收益"，也有亲们告诉宝宝："我不炒股票只做理财，感谢宝宝为我每天赚一杯星巴克，还是超大杯的哦"。宝宝很开心，亲们的称赞就是宝宝不断成长的动力，宝宝会努力改进自己的不足，比如手机客户端。在这里悄悄告诉您，新版的客户端快要上线了，据说功能很强大哦，O(∩_∩)O~。</p><p>亲们或许也都关注到了，自上线那天起，宝宝的头上就戴着"Beta版-测试版"的帽子。不过宝宝慢慢长大了，想想还是决定摘掉这个测试版的帽子，在摘掉它的同时宝宝也同步结束了维持一个季度的"测试版推广期"。所以，接下来宝宝会有所改变，具体是这样滴——<span class="alt">【5月20日零点，宝宝的"测试版推广期"将正式结束，在此之后新开户或新转户的亲们佣金率将要调整为"万分之二点五"了；但是宝宝同时也承诺：在5月20日零点之前已经开户或已经转户的亲们，将按照我们此前的约定，未来交易依然实施"万分之二"的佣金率，并且继续享受宝宝提供的各种服务】。</span></p><p>佣金率虽然变了，但是宝宝为各位亲们提供优质服务的态度不变。宝宝将尽快推出更好的客户端，更多的理财服务，以及更优质的产品，也请各位亲继续关爱宝宝，呵护宝宝！</p>'
+	})
+})
+
+</script>
+</body>
+</html>

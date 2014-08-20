@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no,target-densitydpi = medium-dpi">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-touch-fullscreen" content="YES">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title>身份验证</title>
+    <link rel="stylesheet" type="text/css" href="css/base.css">
+    <link rel="stylesheet" type="text/css" href="css/sjkh.css">
+<link rel="stylesheet" type="text/css" href="skin/skin.css">
+</head>
+<body>
+<div id="failWraper" style="display:none;">
+	<img class="passVedio" src="img/successVedio.png">
+	<p class="passVedioText">对不起，您的视频见证没有成功，您可以在相关资料准备齐备后，重新<a href="reservation.htm">预约视频</a>完成视频见证。</p>
+</div>
+<div id="waitWraper" style="display:none;">
+    <img class="passVedio" src="img/successVedio.png">
+    <p class="passVedioText">您已预约QQ视频见证，我们的客服将尽快联系您，您也可<a href="javascript:;" id="bBtn">立即排队</a>完成视频见证。</p>
+</div>
+<script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="js/alert.js"></script>
+<script type="text/javascript" src="js/com.js"></script>
+<script>
+var oData = {};
+var iState = getUrlParameter('state');
+if (iState === '3') {
+    $('#failWraper').show();
+} else if (iState === '1'){
+    $('#waitWraper').show();
+    $('#bBtn').click(function(){
+        oTools.ReadToLocal(function (data) {
+            oData = $.extend(oData, data);
+            // 跳转视频见证
+            onJsOverrideUrlLoading('http://action:10050?urlfalse=/sjkh/fail.htm?state=3&&urltrue=/sjkh/setpwd.htm&&cardId=' + oData.IDNUMBER + '&&mobileNo=' + oData.MOBILENO + '&&branchNo=' + branchNo + '&&clientId=' + oData.CLIENTID + '&&clientName=' + oData.CLIENTNAME + '&&state=1');
+        }, "IdNumber=&clientName=&clientId=&MobileNo=&csdcOpenFlag=&openStatus=&digitalPwd=");
+    });
+}
+</script>
+</body>
+</html>

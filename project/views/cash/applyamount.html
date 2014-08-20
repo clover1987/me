@@ -1,0 +1,42 @@
+<div class="page" id="cash_applyamount" data-pageTitle="参与明细" style="height: 100%;">
+	<div class="mod-scale h110 mb15">
+		<p class="scale-p1">
+			昨日参与金额(元)
+			<!-- <span class="fr scale-p1-span" id="next_settle_date"></span> -->
+		</p>
+		<p class="scale-p2" id="trade_amount"></p>
+	</div>
+	<div class="trade-box">
+		<div class="trade-in" style="top: 110px;">购买</div>
+		<div class="trade-out" style="top: 110px;">赎回</div>
+		<div class="trade-list">
+
+			<div id="v_container_applyamount">
+				<div class="visc_wrapper" id="v_wrapper_applyamount"
+					data-iscrollPageId="cash_applyamount">
+					<div class="visc_scroller">
+						<div class="visc_pullDown" style="display: none;">
+							<span class="visc_pullDownIcon"></span>
+							<div class="visc_pullDownDiv">
+								<span class="visc_pullDownLabel">下拉加载上一页</span><br /> 时间更新于：<span
+									class="visc_pullDownTime"></span>
+							</div>
+						</div>
+						<div class="trade-bg-top" id="applyamount_top"></div>
+						<div class="trade-bg-bot" id="applyamount_bot"></div>
+						<ul id="applyamount_ul">
+						</ul>
+						<div class="visc_pullUp" style="display: none;">
+							<span class="visc_pullUpIcon"></span>
+							<div class="visc_pullUpDiv">
+								<span class="visc_pullUpLabel">上拉加载下一页</span><br /> 时间更新于：<span
+									class="visc_pullUpTime"></span>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no,target-densitydpi = medium-dpi">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-touch-fullscreen" content="YES">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title>身份验证</title>
+    <link rel="stylesheet" type="text/css" href="css/base.css">
+    <link rel="stylesheet" type="text/css" href="css/sjkh.css">
+<link rel="stylesheet" type="text/css" href="skin/skin.css">
+</head>
+<body>
+<div id="digitalWraper">
+    <img class="passVedio" src="img/fail.png">
+	<p class="passVedioText">您好，证书安装失败，请手动安装证书。</p>
+    <p class="passVedioText" id="prompt" style="display:none;"></p>
+    <a href="javascript:;" id="okBtn">安装证书</a>
+    <a href="uploadid.htm" style="display:none;"></a>
+</div>
+<script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="js/com.js"></script>
+<script>
+var time = 30,
+    timer;
+oTools.ReadToLocal(function(data) {
+    var i = data.TIMERNUM || 0;
+    i = parseInt(i) + 1;
+    oTools.SaveToLocal({
+        timerNum: i
+    }, function() {
+        if (i > 3) {
+            $('#okBtn').unbind();
+            $('#okBtn').bind('click', function(){
+                $('#okBtn').unbind();
+                $('#prompt').show();
+                $('#prompt').html('亲，您尝试安装证书次数已经超过三次了，宝宝想哭 了，休息下吧，' + time + '秒后您可以重新安装。');
+                timer = setInterval(function(){
+                    time -= 1;
+                    if (time <= 0) { 
+                        clearInterval(timer); 
+                        $('#prompt').hide();
+                    }
+                    $('#prompt').html('亲，您尝试安装证书次数已经超过三次了，宝宝想哭 了，休息下吧，' + time + '秒后您可以重新安装。');
+                }, 1000);
+            });
+            setTimeout(function() {
+               $('#okBtn').unbind(); 
+               oTools.SaveToLocal({
+                    timerNum: 0
+               }, function() {
+                    $('#okBtn').bind('click', function(){
+                        onJsOverrideUrlLoading("/sjkh/digital.htm");
+                    });
+               });
+            }, 30000);
+        } else {
+            $('#okBtn').bind('click', function(){
+                onJsOverrideUrlLoading("/sjkh/digital.htm");
+            });
+        }
+    });
+}, 'timerNum=');
+</script>
+</body>
+</html>

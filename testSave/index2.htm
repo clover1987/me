@@ -1,0 +1,125 @@
+﻿<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<script type="text/javascript">
+var cRequestSign = "/reqxml";
+var xmlhttp;
+if(window.XMLHttpRequest){
+    // code for IE7+, Firefox, Chrome, Opera, Safari
+    xmlhttp=new XMLHttpRequest();
+  }
+else{  
+    // code for IE6, IE5
+    xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+
+xmlhttp.onreadystatechange=function(){   
+  if(xmlhttp.readyState==4 && xmlhttp.status==200){
+
+	    //使用JSON的方式来解析XML数据对象的数据
+	    //alert(xmlhttp.responseText);
+	    var JSONObject = eval("(" + xmlhttp.responseText + ")"); 	    
+			var messageNodes = JSONObject.GRID0;
+      //alert(JSONObject.GRID0);
+			if(messageNodes != null){	
+				  var count = messageNodes[0].split('|').length; 	
+				  var txt="<table border='1'><tr>";
+				  for(i=0;i<count-1;i++){
+				      txt=txt + '<th>第' + (i + 1) +'列</th>';
+				    } 
+					txt=txt + "</tr>";
+
+			    for(i=0;i<messageNodes.length;i++){
+			      txt=txt + "<tr>";
+			      items = messageNodes[i].split('|');
+			      for(j=0;j<items.length - 1;j++){
+			      	 temp = items[j];
+			      	 if(temp.length > 0)
+			            txt=txt + "<td>"  + temp + "&nbsp;</td>";
+				       else
+				         	txt=txt + "<td>&nbsp;</td>";
+			       }
+			      txt=txt + "</tr>";
+					 }
+					txt=txt + "</table>";			
+					//把值txt显示在div上
+					document.getElementById("myDiv").innerHTML=txt;
+				}
+   			else{
+				   	if(JSONObject.ERRORMESSAGE != null)
+								document.getElementById("myDiv").innerHTML ='ERRORMESSAGE=' + JSONObject.ERRORMESSAGE;
+						else
+							 document.getElementById("myDiv").innerHTML = xmlhttp.responseText;
+						 		//alert("应答数据格式错误，原始文本内容为：" + xmlhttp.responseText);
+						}
+			}
+}
+
+
+//当url含中文(utf8编码)字时,需做网页编码encodeURI()处理
+function loadXMLDocGet(){
+	xmlhttp.open("GET", encodeURI("/reqxml?action=200&abcd=($abcd)&stockcode=($stockcode)&abc=中文也支持的&account=($Account)&mobilecode123123=($mobilecode)"), true);		
+	xmlhttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded")
+	xmlhttp.send();
+}
+
+//post的内容(默认utf8编码)一般不需要做网页编码处理
+function loadXMLDocPost(){
+	xmlhttp.open("POST", "/reqxml", true);
+	xmlhttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded")
+	xmlhttp.send("action=600&token=($token)&&yybcode=20224&mobilecode=($mobilecode)&commpwd=123456");
+}
+
+function RequestLocal(){
+  xmlhttp.open("GET", "/reqlocal?Account=&UserName=&mobilecode=", true);
+	xmlhttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded")
+	xmlhttp.send();
+}
+
+function RequestSaveMap(){
+  xmlhttp.open("GET", "/reqSaveMap?Account=55555555555555555&UserName=55555555555555555555&mobilecode=555555555555555555", true);
+	xmlhttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded")
+	xmlhttp.send();
+}
+
+function RequestReadMap(){
+  xmlhttp.open("GET", "/reqReadMap?Account=&UserName=&mobilecode=", true);
+	xmlhttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded")
+	xmlhttp.send();
+}
+
+function RequestSaveFile(){
+	xmlhttp.open("POST","/reqSaveFile?filename=abcd.efg", true);
+	xmlhttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded")
+	xmlhttp.send('{"Text":"帮我把这段内容存进去，我过会来读！"}');
+}
+
+function RequestReadFile(){
+	xmlhttp.open("GET","/reqReadFile?filename=abcd.efg", true);
+	xmlhttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded")
+	xmlhttp.send();
+}
+
+function loadXMLDocsync(){
+	xmlhttp.open("GET",cRequestSign + "?action=80", false);
+	xmlhttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded")
+	xmlhttp.send();
+	document.getElementById("myDiv").innerHTML=xmlhttp.responseText;
+}
+</script>
+</head>
+
+<body>
+<button type="button" onclick="loadXMLDocPost()">业务请求(异步Post)</button><br/>
+<button type="button" onclick="loadXMLDocGet()">业务请求(异步Get)</button><br/>
+<button type="button" onclick="RequestLocal()">ReqLoacl(内部取值)</button><br/>
+<button type="button" onclick="RequestSaveMap()">ReqSaveMap(保存变量)</button><br/>
+<button type="button" onclick="RequestReadMap()">ReqReadMap(读取变量)</button><br/>
+<button type="button" onclick="RequestSaveFile()">ReqSaveFile(保存文件)</button><br/>
+<button type="button" onclick="RequestReadFile()">ReqReadFile(读取文件)</button><br/>
+<br>
+gif<img src="1.gif">png<img src="1.png">jpg<img src="1.jpg">bmp<img src="1.bmp">ico<img src="1.ico"><br>
+<br>
+<div id="myDiv"><h3>测试结果显示在这里!</h3></div>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<div class="page" id="cash_takenback" data-pageTitle="取出" style="height: 100%;">
+	<div class="mod-scale h110 mb15">
+		<p class="scale-p1">可取款金额(根据可用份额计算，单位:元)</p>
+		<p class="scale-p2 mt30" id="asset_available_balance_strong"></p>
+	</div>
+	<div class="from-box p0-20-10-20">
+		<div class="form-item02">
+			<span class="item-h2">取款金额</span> <input type="number"
+				class="item-input-add" placeholder="请填写您的取款金额"
+				id="redeem_amount_input" />
+		</div>
+	</div>
+	<p class="next-p1 p0-20 mb15" style="color: #999999;">
+		您取回的款项预计在<em class="blue" id="next_settle_date_em"></em>左右到达您<em
+			class="blue" id="bank_name_em"></em>的银行卡
+			<!--  尾号为<em class="blue"
+			id="bank_card_no_em"></em>的银行卡 -->
+	</p>
+	<!--  <a href="javascript:void(0);" class="oran-next-btn m0-20" id="takenbackBtn">立即取款</a>-->
+	<a href="javascript:void(0);" class="gray-next-btn m0-20" id="takenbackBtn">立即取款</a>
+	<p class="next-p1 p0-20 mt10" style="color: #999999;">
+		宝宝提醒：金腾通货币基金可直接用于购买股票，不需要取出哦！</p>
+	<input type="hidden" name="hiddenflag" id="hiddenflag" value="-1" />
+	<div class="window" style="display: none;" id="expiredWindow">
+		<div class="window-in" id="expiredPwdWindow-in">
+			<div class="win_title">
+				<div class="pic">
+					<img src="/me/project/images/icon12.png" width="32" height="32">
+				</div>
+				<div class="text">亲，请输入交易密码确认提款申请</div>
+			</div>
+			<div id="textbtn">
+				<input type="password" class="pwd_input" placeholder="请重新输入密码"
+					id="password" maxlength="6">
+				<!-- pwd_btn -->
+			</div>
+			<div id="failtext" style="display: none;">
+				<p class="open-account-p" style="color: black;">亲，为确保您的账户安全，请休息10分钟后重试
+				</p>
+			</div>
+			<p class="pwd_p" id="errorTips" style="margin: 0 10%;"></p>
+            <a href="javascript:void(0);" class="pwd_btn_l mt10" id="nextBtn" data="0">确定</a>
+            <a href="javascript:void(0);" class="pwd_btn_r mt10" id="nextBtn_r" data="0">取消</a>
+		</div>
+	</div>
+</div>

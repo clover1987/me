@@ -1,0 +1,174 @@
+<style>
+    #cash_recharge .black_overlay{
+        display: none;
+        position: absolute;
+        top: 0%;
+        left: 0%;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0,.5);
+        z-index:1001;
+        -moz-opacity: 0.8;
+        opacity:.80;
+        filter: alpha(opacity=80);
+    }
+    #cash_recharge .white_content {
+        display: none;
+        position: absolute;
+        top: 28%;
+        left: 2.5%;
+        width: 95%;
+        /*height:210px;*/
+        border: 0px solid lightblue;
+        background-color: #FFF;;
+        z-index:1002;
+        overflow: auto;
+        /*padding-top: 20px;*/
+        padding-bottom: 20px;
+
+    }
+    #cash_recharge .text{
+        font-family: 'Microsoft Yahei', 'Simsun';
+    }
+    #cash_recharge .phone-btn-box02 {
+        height: 36px;
+        margin-top: 15px;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    #cash_recharge .phone-btn-box02 a {
+        display: block;
+        width: 48%;
+        height: 36px;
+        line-height: 36px;
+        text-align: center;
+        font-size: 21px;
+    }
+    #cash_recharge .phone-btn-box02 .ok {
+        float: right;
+        background-color: #52a7ff;
+        color: #FFF;
+    }
+
+</style>
+
+
+
+
+<div class="page" id="cash_recharge" data-pageTitle="充值" style="height: 100%;">
+
+    <div id="fade" class="black_overlay">
+
+    </div>
+
+
+    <div id="MyDiv" class="white_content">
+
+
+            <div id="deal_text" style="padding-top: 20px;padding-left: 20px;padding-right: 20px">
+                <p class="text" style="text-align: left; font-size:15px;">
+                    亲，充值成功后将在16:00自动申购金腾通货币基金。
+                    <br>
+                    <br>
+                    申购金额=账户余额-保留金额
+                    <br>
+                    <br>
+                    您也可以在16:00前通过全能行客户端银证转账转出可取金额。
+                </p>
+            </div>
+            <div class="phone-btn-box02" id="phone-btn">
+            <a href="javascript:void(0);" class="cancel" id="cancel" style="float:right;">
+                放弃充值
+            </a>
+            <a href="javascript:void(0);" class="ok" id="ok" style="float:left;">
+                确认充值
+            </a>
+        </div>
+
+
+    </div>
+
+    <div class="mod-bank m20">
+        <div class="" id="bank_logo">
+				<span class="bank-logo">
+					<span class="" id="bank_logo_s"></span>
+				</span>
+				<span class="bank-name" id="bank-name">
+
+				</span>
+            <!-- 	<p class="bank-card" id="bankAccount">****&nbsp;&nbsp;****&nbsp;&nbsp;****&nbsp;&nbsp;1234</p> -->
+            <p class="bank-card" id="bank-card"></p>
+        </div>
+        <div class="bank-money" id="queryBalanceDiv" style="display:none;">
+            <span class="text">可取金额</span>
+            <a href="javascript:void(0);" class="money" id="balance" style="text-decoration: underline;"></a>
+            <span class="money" id="showbalance" style="display: none;"><strong></strong>元</span>
+            <input type="hidden" id="inputbalance" />
+        </div>
+        <div class="bank-money" id="showBalanceDiv" style="display:none;">
+            <!-- <span class="text">可取金额</span> -->
+            <span class="money" id="showbalance"></span>
+            <!-- <span class="text">客服电话：4001-600109</span> -->
+        </div>
+    </div>
+    <div class="from-box p0-20-10-20">
+        <div class="form-item02">
+            <span class="item-h2">充值金额</span>
+            <input type="number" class="item-input-add"
+                   placeholder="请输入您的充值金额" id="redeem_amount_input"/>
+        </div>
+    </div>
+    <a href="javascript:void(0);" class="blue-next-btn m0-20" id="rechargeBtn">立即充值</a>
+
+    <input type="hidden" name="hiddenflag" id="hiddenflag" value="-1" />
+
+
+
+    <div class="window" style="display: none;" id="expiredPwdWindow">
+        <div class="window-in" id="expiredPwdWindow-in-r">
+            <div class="win_title">
+                <div class="pic">
+                    <img src="/me/project/images/icon12.png" width="32" height="32">
+                </div>
+                <div class="text">亲，请输入交易密码确认申请</div>
+            </div>
+            <div id="textbtn">
+                <input type="password" class="pwd_input" placeholder="请重新输入密码"
+                       id="password" maxlength="6">
+                <!-- pwd_btn -->
+            </div>
+            <div id="failtext" style="display: none;">
+                <p class="open-account-p" style="color: black;">亲，为确保您的账户安全，请休息10分钟后重试
+                </p>
+            </div>
+            <p class="pwd_p" id="errorTips" style="margin: 0 10%;"></p>
+            <a href="javascript:void(0);" class="pwd_btn_l mt10" id="nextBtn" data="0">确定</a>
+            <a href="javascript:void(0);" class="pwd_btn_r mt10" id="nextBtn_r" data="0">取消</a>
+        </div>
+    </div>
+
+
+
+    <div class="window" style="display: none;" id="expiredBankWindow">
+        <div class="window-in">
+            <div class="win_title">
+                <div class="pic">
+                    <img src="/me/project/images/icon12.png" width="32" height="32">
+                </div>
+                <div class="text">亲，请输入银行密码确认申请</div>
+            </div>
+            <div id="textbtn">
+                <input type="password" class="pwd_input" placeholder="请重新输入密码"
+                       id="bank_password" maxlength="6">
+                <!-- pwd_btn -->
+            </div>
+            <div id="failtext" style="display: none;">
+                <p class="open-account-p" style="color: black;">亲，为确保您的账户安全，请休息10分钟后重试
+                </p>
+            </div>
+            <p class="pwd_p" id="errorTips" style="margin: 0 10%;"></p>
+            <a href="javascript:void(0);" class="pwd_btn_l mt10" id="nextBtn" data="0">确定</a>
+            <a href="javascript:void(0);" class="pwd_btn_r mt10" id="nextBtn_r" data="0">取消</a>
+        </div>
+    </div>
+</div>

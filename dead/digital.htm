@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no,target-densitydpi = medium-dpi">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-touch-fullscreen" content="YES">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title>签署协议</title>
+    <link rel="stylesheet" type="text/css" href="css/base.css">
+    <link rel="stylesheet" type="text/css" href="css/sjkh.css">
+<link rel="stylesheet" type="text/css" href="skin/skin.css">
+</head>
+<body>
+<div id="digiHead">
+    <h6 class="textTitle">开户只需三步:</h6>
+    <span class="textId"><em class="icoTopNav">1</em>身份验证</span><span class="textData textFocus"><em class="icoTopNav">2</em>签署协议</span><span class="textKeep"><em class="icoTopNav">3</em>三方存管</span>
+</div>
+<div id="digiWraper">
+    <h6 class="titleDigi">正在下载数字证书</h6>
+    <span class="rateDigi">进度0%</span>
+    <div class="slipDigi">
+        <div class="downDigi"></div>
+    </div>
+    <h6 class="titleDigi">正在安装数字证书</h6>
+    <span class="rateDigi">进度0%</span>
+    <div class="slipDigi">
+        <div class="instalDigi"></div>
+    </div>
+    <p class="textWait">请稍候...</p>
+</div>
+<!-- hand.htm -->
+<script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="js/alert.js"></script>
+<script type="text/javascript" src="js/com.js"></script>
+<script type="text/javascript">
+$('#digiWraper .downDigi').eq(0).addClass('downDigiLoad');
+setInterval(function() {
+	var scale = Math.round($('#digiWraper .downDigi').eq(0).width()/$('#digiWraper .slipDigi').eq(0).width() * 100);
+	$('#digiWraper .rateDigi').eq(0).html('进度' + scale + '%');
+}, 100);
+setTimeout(function() {
+	$('#digiWraper .instalDigi').eq(0).addClass('instalDigiLoad');
+	var timer = setInterval(function() {
+		var scale = Math.round($('#digiWraper .instalDigi').eq(0).width()/$('#digiWraper .slipDigi').eq(1).width() * 100);
+        $('#digiWraper .rateDigi').eq(1).html('进度' + scale + '%');
+         // if (scale >= 99) {
+         //     onJsOverrideUrlLoading("/sjkh/digitalFail.htm");
+         //     clearInterval(timer);
+         // }
+	});
+}, 9000);
+installDigital();
+
+//安装数字证书，成功后自动跳到相关步骤
+function installDigital(){
+	oTools.ReadToLocal(function(data) {
+		qryOpenStatus(data.CLIENTID, data.MOBILENO, function(binData) {
+			var nextpage = '';
+			var open_status = binData.open_status.split('');	
+			if (open_status[3] == 0 || open_status[4] == 0) {
+				nextpage = '/sjkh/ktzh.htm';
+			}else{
+				nextpage = '/sjkh/depository.htm';
+			}
+			onJsOverrideUrlLoading('http://action:10052?urlfalse=/sjkh/digitalFail.htm&&urltrue=' + nextpage + 
+			'&&cardId=' + data.IDNUMBER + '&&clientId=' + data.CLIENTID + '&&clientName=' + data.CLIENTNAME + 
+			'&&MobileNo=' + data.MOBILENO + '&&tztcerttype=' + data.CSDCOPENFLAG + '&&digitalPwd=123456');// + (data.DIGITALPWD || '123456')
+		});		
+	}, 'IdNumber=&clientName=&clientId=&MobileNo=&csdcOpenFlag=&openStatus=&digitalPwd=');
+};
+// 开户状态查询
+function qryOpenStatus(CLIENTID, MOBILENO, succ) {
+	var params = cRequestSign + encodeURI("?action=31001&path=/WA0037&op_station=($tztudid)&client_id=" + CLIENTID + "&mobile_tel=" + MOBILENO);
+	getData(params, '', function (gdata){
+		var binData = JSON.parse(gdata.BINDATA),
+			error_no = binData.error_no,
+			error_info = binData.error_info;
+		if (error_no == '0') {
+			succ(binData);
+		} else {
+	    alert(error_info);
+		}
+	});
+};
+</script>
+</body>
+</html>

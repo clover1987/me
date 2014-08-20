@@ -1,0 +1,150 @@
+<!--<style>-->
+    <!--#text{-->
+        <!--position:absolute;-->
+        <!--top:0;-->
+        <!--left:0;-->
+        <!--background:rgba(0,0,0,0.66);-->
+    <!--}-->
+<!--</style>-->
+<!--<div id="test"></div>-->
+<div class="header bb">
+    <div class="header-menu header-menu-h"></div>我
+    <div class="menu" id="menu_i">
+        <div class="menu-title">
+            <img src="/me/project/images/smile.png" width="45" height="45"/>
+            <div class="menu-title-name " id="username"></div>
+            <div class="menu-title-text"></div>
+            <div class="menu-input-trigger"></div>
+        </div>
+        <div class="menu-item modifyMobile">
+            <div class="menu-item-left"></div>
+            <input class="menu-item-input" id="mobile" type="tel" value="" placeholder="输入移动号码" maxlength="11" readonly>
+            <a class="menu-item-getCaptcha">获取验证码</a>
+            <div class="menu-item-edit"></div>
+            <div class="menu-item-editing"></div>
+        </div>
+        <div class="menu-item modifyTel">
+            <div class="menu-item-left"></div>
+            <input class="menu-item-input" id="tel" type="tel" value="" placeholder="输入固定电话号码"  readonly>
+            <div class="menu-item-edit"></div>
+            <div class="menu-item-editing"></div>
+        </div>
+        <div class="menu-item modifyAddress">
+            <div class="menu-item-left"></div>
+            <input class="menu-item-input"  id="address" type="text" value="" placeholder="输入地址"  readonly>
+            <div class="menu-item-edit"></div>
+            <div class="menu-item-editing"></div>
+        </div>
+
+        <div class="menu-item2" id="changePass_j">
+            修改交易密码
+            <div class="menu-item2-arrow"></div>
+        </div>
+        <div class="menu-item2" id="changePass_z">
+            修改资金密码
+            <div class="menu-item2-arrow"></div>
+        </div>
+        <a href="javascript:void(0);" id="remind_set">
+            <div class="menu-item2" id="remindset">
+                提醒设置
+                <div class="menu-item2-arrow"></div>
+            </div>
+        </a>
+
+        <div class="window" style="display: none;" id="expiredPwdWindow">
+            <div class="window-in-i" id="expiredPwdWindow-in" style="top: 10%;">
+                <div class="win_title">
+                    <div class="pic">
+                        <img src="/me/project/images/icon12.png" width="32" height="32">
+                    </div>
+                    <div class="text"></div>
+                </div>
+                <div id="textbtn_i">
+                    <input type="password" class="pwd_input" placeholder="请输入密码"
+                           id="password" maxlength="6">
+                    <input type="password" class="pwd_input" placeholder="请输入新密码"
+                           id="newPassword" maxlength="6">
+                    <input type="password" class="pwd_input" placeholder="请重新输入新密码"
+                           id="reNewPassword" maxlength="6">
+                    <!-- pwd_btn -->
+                </div>
+                <div id="failtext_i" style="display: none;">
+                    <p class="open-account-p" style="color: black;">亲，为确保您的账户安全，请休息10分钟后重试
+                    </p>
+                </div>
+
+                <p class="pwd_p" id="errorTips" style="margin: 0 10%;"></p>
+
+                <a href="javascript:void(0);" class="pwd_btn_l mt10" id="nextBtn" data="0">确定</a>
+                <a href="javascript:void(0);" class="pwd_btn_r mt10" id="nextBtn_r" data="0">取消</a>
+
+            </div>
+        </div>
+
+    </div    >
+
+</div>
+
+<div class="page" id="mine_iHasBind" data-pagetitle="我" style="height: 100%;">
+    <div class="mod-banner-in">
+        <span class="banner-name" id="username_1"></span>
+        <div class="banner-map" id="hasassetDiv" style="display: none;">
+            <div class="map-arc">
+                <div id="canvas" style="width: 170px; height: 162px;"></div>
+            </div>
+			<span class="map-money">
+				<p id="asset_amount" style="font-size: 1.6em; width: 130px"></p>
+				<p>人民币总资产</p>
+			</span>
+            <div class="map-value-top">
+				<span class="map-value-sapn"> <em>可取余额</em><strong id="asset_available_balance"></strong>
+				</span> <span class="map-value-sapn"> <em>可用余额</em><strong id="asset_balance"></strong>
+				</span> <span class="map-value-sapn"> <em>持仓市值</em><strong id="secu_marketvalue"></strong>
+				</span>
+            </div>
+            <!--
+            <div class="map-value-bot">
+                <span>账户总盈亏</span> <strong id="asset_return"></strong>
+            </div>
+             -->
+            <div class="map-value-bot-2" style="display: block;"  >
+                <span>账户总盈亏</span>
+                <strong class="blue">250<b class="value-unit">万元</b></strong>
+                <!--此处加class=red blue 改变颜色-->
+            </div>
+
+        </div>
+        <!--<div class="banner-map empty-bg" id="noassetDiv" style="display: none;">-->
+            <!--<div class="map-value-top">-->
+                <!--<span class="empty-span">当前无可用资产</span>-->
+            <!--</div>-->
+            <!--<div class="map-value-bot" style="display: none;"  id="return">-->
+                <!--<span>账户总盈亏</span>-->
+                <!--<strong class="blue">250<b class="value-unit">万元</b></strong>-->
+                <!--&lt;!&ndash;此处加class=red blue 改变颜色&ndash;&gt;-->
+            <!--</div>-->
+        <!--</div>-->
+        <div class="banner-map empty-bg" id="noassetDiv" style="display: none;">
+            <div class="map-value-top">
+                <span class="empty-span">当前无可用资产</span>
+            </div>
+            <div class="map-value-bot" style="display: none;"  id="return">
+                <span>账户总盈亏</span>
+                <strong class="blue">250<b class="value-unit">万元</b></strong>
+                <!--此处加class=red blue 改变颜色-->
+            </div>
+        </div>
+    </div>
+    <div class="mod-content">
+        <ul class="btn-list beforeLogin">
+            <li><a hrf="#" class="a1" id="cashManagement"><span class="a1_before before"></span>我的现金理财<span class="a1_after after"></span></a></li>
+            <li><a hrf="#" class="a2" id="myAccount"><span class="a2_before before"></span>我的账户<span class="a2_after after"></span></a></li>
+
+            <!--<li><a hrf="#" class="a3" id="myRemind"><span class="a3_before before"></span>我的提醒<span class="a3_after after"></span></a></li>-->
+            <li><a hrf="#" class="a3" id="myRemind"><span class="a3_before before"></span>我的提醒<span class="a3_after after"></span></a></li>
+        </ul>
+    </div>
+    <div id="updatetimeDiv" style="text-align: center;width: 100%;bottom: 10px;position: fixed;color: #9a9a9a;">
+    </div>
+</div>
+

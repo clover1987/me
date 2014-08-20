@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no,target-densitydpi = medium-dpi">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-touch-fullscreen" content="YES">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title>三方存管</title>
+    <link rel="stylesheet" type="text/css" href="css/base.css">
+    <link rel="stylesheet" type="text/css" href="css/sjkh.css">
+<link rel="stylesheet" type="text/css" href="skin/skin.css">
+</head>
+<body>
+<div id="depHead">
+    <h6 class="textTitle">开户只需三步:</h6>
+    <span class="textId"><em class="icoTopNav">1</em>身份验证</span><span class="textData"><em class="icoTopNav">2</em>签署协议</span><span class="textKeep textFocus"><em class="icoTopNav">3</em>三方存管</span>
+</div>
+<div id="depTitle">
+    <div class="textCheckbank">
+        <select id="selectBank">
+            <!--option value="0">快捷签约银行</option>
+            <option value="1">光大银行</option>
+			<option value="2">民生银行</option>
+            <option value="3">中国农业银行</option>
+            <option value="4">上海浦发银行</option>
+			<option value="5">上海银行</option>
+			<option value="6">兴业银行</option>
+			<option value="7">招商银行</option>
+			<option value="8">中国银行</option>
+			<option value="9">中信银行</option-->
+        </select>
+    </div>
+    <div class="depCheckbox">
+		<p class="depCap depCapTitle">说明：</p>
+	    <p class="depCap">请您选择三方存管银行，并输入您本人名下的银行卡号及银行卡取款密码（中国银行为电话银行密码），完成三方存管签约。网银签约银行无需提供银行卡号和密码，系统将为您办理三方存管预指定，您还需要通过对应银行的网上银行功能完成三方存管签约。</p>
+	</div>
+	<!--div class="textCheckbank">
+        <select id="wyBank">
+            <option value="0">网银签约银行</option>
+            <option value="1">光大银行</option>
+			<option value="2">民生银行</option>
+            <option value="3">中国农业银行</option>
+            <option value="4">上海浦发银行</option>
+			<option value="5">上海银行</option>
+			<option value="6">兴业银行</option>
+			<option value="7">招商银行</option>
+			<option value="8">中国银行</option>
+			<option value="9">中信银行</option>
+        </select>
+    </div>
+    <div class="depCheckbox">
+	    <p class="depCap">选择该类银行，无需提供银行卡号和密码，系统将为您办理三方存管预指定，您还需通过对应银行的网上银行功能完成三方存管签约。</p>
+	</div-->
+</div>
+<div id="depCheckbox" style="display:none;">
+    <p class="depCap" id="depCap">《券商银行投资者三方协议》我已经全部阅读并同意签署</p>
+    <b class="depIco"></b>
+</div>
+<div id="depcardBox">
+    <p class="depLine">
+        <input class="dep" type="text" id="bankNo" placeholder="请扫描或输入银行卡">
+        <a class="depCarmer" href="javascript:;"></a>
+    </p>
+    <p class="depLine depNoline">
+        <input class="dep" type="password" id="bankPwd" placeholder="输入银行卡密码">
+    </p>
+</div>
+<div id="depFoot">
+    <!--p class="textDep">使用网银签约银行后开通三方存管后，还需要银行网银确认签约三方存管</p-->
+    <a class="btnContinue" href="javascript:;">开通三方存管</a>
+	<!--success.htm  交易时段-->
+</div>
+<script type="text/javascript" src="js/zepto-1.1.2.min.js"></script>
+<script type="text/javascript" src="js/com-demo.js"></script>
+<script type="text/javascript" src="js/demo.js"></script>
+</body>
+</html>

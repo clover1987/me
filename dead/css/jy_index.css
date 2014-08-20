@@ -1,0 +1,46 @@
+body{ background: #171a1d;}
+.yjb_h1{font-size: 13px; text-align: center; background: #222325; height: 44px; line-height: 44px; color:#fff;}
+.yjb_menu{border-top:1px solid #2c2d2f;	 font-size:0;}
+.yjb_menu .tagItem{height:80px;text-align: center; display:inline-block;*display:inline;*zoom:1;}
+.tagItem .ico{ text-align:center; margin:15px auto 0;}
+.tagItem .ico em{ display:inline-block;*display:inline;*zoom:1;width:18px; height:18px;}
+.tagItem .text{ font-size:20px; font-style:normal; color:#fff;}
+.yjb_menu .buy,.yjb_menu .sale{width:33%;border-right: 1px solid #2c2d2f;}
+.yjb_menu .retreat{width:30%;}
+.buy em{ background:url(../img/jy_a.png) no-repeat; background-size:18px 18px;}
+.sale em{ background:url(../img/jy_b.png) no-repeat; background-size:18px 18px;}
+.retreat em{ background:url(../img/jy_c.png) no-repeat; background-size:18px 18px;}
+
+.yjb_list{border-bottom: 1px solid #2c2d2f;}
+.yjb_list li{height: 39px; line-height: 39px; background-color: #222325;color:#fff;border-bottom: 1px solid #171a1d;border-top:1px solid #2c2d2f;font-size: 16px;padding:0 17px;}
+.yjb_list li i{width:8px;height:8px;border: 1px solid #fff;float: right; -webkit-transform:rotate(45deg);border-bottom: none; border-left: none;margin-top: 14px;}
+.yjb_list li.more{border-bottom: 1px solid #171a1d;
+border-top: 1px solid #2c2d2f;}
+.yjb_list li.more em{color:#2a8ee3;}
+.yjb_list li.wdcc{ background-image: url(../img/icon1.png); background-repeat: no-repeat;background-size: 13px auto; background-position: 17px 12px; text-indent: 20px;}
+.yjb_list li.wdzj{ background-image: url(../img/icon2.png);background-size: 13px auto; background-repeat: no-repeat; background-position: 17px 12px; text-indent: 20px;}
+.yjb_list li.jjjy{ background-image: url(../img/icon3.png);background-size: 13px auto; background-repeat: no-repeat;background-position: 17px 12px; text-indent: 20px;}
+/*.yjb_list li.rzrq{ background-image: url(../img/icon4.png);background-size: 13px auto; background-repeat: no-repeat;background-position: 17px 12px; text-indent: 20px;}*/
+.yjb_list li.yzzz{ background-image: url(../img/icon5.png);background-size: 13px auto; background-repeat: no-repeat;background-position: 17px 12px; text-indent: 20px;}
+.operea{ position:absolute;bottom:0; width:100%; text-align:center;}
+
+.skin_b .wrap{ background: #f9f9f9;}
+.skin_b .yjb_h1{font-size: 13px; text-align: center; background: #2a8ee3; height: 44px; line-height: 44px; color:#fff;}
+.skin_b .yjb_menu{border-top:1px solid #cccccc;border-bottom:1px solid #cccccc;}
+.skin_b .yjb_menu a{height:80px;line-height: 80px; text-align: center;float:left;}
+.skin_b .yjb_menu a.yjb_menu0,.skin_b .yjb_menu a.yjb_menu1,.skin_b .yjb_menu a.buy, .skin_b .yjb_menu a.sale{width:33%;border-right: 1px solid #ccc;}
+.skin_b .yjb_menu a.yjb_menu2{width:30%;}
+.skin_b .yjb_menu a,.skin_b .yjb_menu a:hover{color:#444444;}
+.skin_b .yjb_list li{height: 39px; line-height: 39px; background-color: #f1f1f1;color:#444;border-bottom: 1px solid #ccc;border-top:1px solid #f9f9f9;padding:0 17px;}
+.skin_b .yjb_list li i{width:8px;height:8px;border: 1px solid #999999;float: right; -webkit-transform:rotate(45deg);border-bottom: none; border-left: none;margin-top: 14px;}
+.skin_b .yjb_list li.items_co5{ background: #f9f9f9;}
+.skin_b .yjb_list li.items_co5 em{color:#2a8ee3;}
+.skin_b .yjb_list li.items_co0{ background-image: url(../img/icon1.png); background-repeat: no-repeat;background-size: 13px auto; background-position: 17px 12px; text-indent: 20px;}
+.skin_b .yjb_list li.items_co1{ background-image: url(../img/icon2.png);background-size: 13px auto; background-repeat: no-repeat; background-position: 17px 12px; text-indent: 20px;}
+.skin_b .yjb_list li.items_co2{ background-image: url(../img/icon3.png);background-size: 13px auto; background-repeat: no-repeat; background-position: 17px 12px; text-indent: 20px;}
+/*.skin_b .yjb_list li.items_co3{ background-image: url(../img/icon4.png);background-size: 13px auto; background-repeat: no-repeat; background-position: 17px 12px; text-indent: 20px;}*/
+.skin_b .yjb_list li.items_co4{ background-image: url(../img/icon5.png);background-size: 13px auto; background-repeat: no-repeat;background-position: 17px 12px; text-indent: 20px;}
+.skin_b .tagItem .text{color:#333;}
+.skin_b{ background:#fff;}
+.skin_b .yjb_list{ border-bottom:none;}
+.skin_b .yjb_menu .buy, .skin_b .yjb_menu .sale{ border-right:solid #ccc 1px;}
